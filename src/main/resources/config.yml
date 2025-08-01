@@ -1,0 +1,54 @@
+happy_ghast:
+  base: 0.05
+  random_mode: false
+  random:
+    mod: 100
+    k: 0
+    scale: 0.001
+  harness_mode: false
+  harness_speed:
+    white_harness: 0.0
+    light_gray_harness: 0.01
+    gray_harness: 0.02
+    black_harness: 0.03
+    brown_harness: 0.04
+    red_harness: 0.05
+    orange_harness: 0.06
+    yellow_harness: 0.07
+    lime_harness: 0.08
+    green_harness: 0.09
+    cyan_harness: 0.1
+    light_blue_harness: 0.11
+    blue_harness: 0.12
+    purple_harness: 0.13
+    magenta_harness: 0.14
+    pink_harness: 0.15
+
+dimension:
+  overworld:
+    to:
+      the_nether:
+        slow_falling_seconds: 30
+        direct: false
+        scale: 1
+      the_end:
+        leaves_floor: true
+        scale: 1
+  the_nether:
+    to:
+      the_end:
+        slow_falling_seconds: 30
+        direct: false
+        scale: 1
+      overworld:
+        leaves_floor: true
+        scale: 1
+  the_end:
+    to:
+      overworld:
+        slow_falling_seconds: 30
+        direct: false
+        scale: 1
+      the_nether:
+        leaves_floor: true
+        scale: 1
