@@ -1,5 +1,5 @@
 name: NzdPlugin
-version: '2.1.0'
+version: '2.2.0'
 api-version: '1.21.8'
 prefix: NzdPlugin
 authors: [ NorthZero ]
@@ -7,3 +7,9 @@ description: by NorthZero
 website: https://northzerod.github.io/
 
 main: io.github.northzerod.nzdPlugin.NzdPlugin
+
+permissions:
+  nzdplugin.command.nzd:
+    default: op
+    children:
+      nzdplugin.command.nzd.reload: true
