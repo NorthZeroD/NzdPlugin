@@ -7,27 +7,28 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.logging.Logger;
 
 public final class NzdPlugin extends JavaPlugin {
-    public static Logger LOGGER;
     public static NzdPlugin instance;
+    public static Logger LOGGER;
 
     @Override
     public void onEnable() {
-        this.saveDefaultConfig();
-        LOGGER = this.getLogger();
         instance = getInstance();
+        LOGGER = this.getLogger();
+        this.saveDefaultConfig();
         ConfigManager.reload();
 
         // 事件注册
         this.getServer().getPluginManager().registerEvents(new PlayerFallIntoVoidListener(), this);
         this.getServer().getPluginManager().registerEvents(new PlayerReachMaxHeightListener(), this);
-        this.getServer().getPluginManager().registerEvents(new PlayerMountHappyGhastListener(), this);
-        this.getServer().getPluginManager().registerEvents(new PlayerDismountHappyGhastListener(), this);
+        if (Configs.HG_ENABLE) {
+            this.getServer().getPluginManager().registerEvents(new PlayerMountHappyGhastListener(), this);
+            this.getServer().getPluginManager().registerEvents(new PlayerDismountHappyGhastListener(), this);
+        }
 
         this.getLifecycleManager().registerEventHandler(LifecycleEvents.COMMANDS, commands -> {
             // 命令注册
             commands.registrar().register(ReloadCommand.getNode());
         });
-
 
         LOGGER.info("插件 NzdPlugin 已启用");
     }

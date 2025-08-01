@@ -3,8 +3,6 @@ package io.github.northzerod.nzdPlugin;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 
-import static io.github.northzerod.nzdPlugin.NzdPlugin.LOGGER;
-
 public final class ConfigManager {
     public static FileConfiguration fc;
 
@@ -12,9 +10,9 @@ public final class ConfigManager {
         NzdPlugin.instance.reloadConfig();
         fc = NzdPlugin.instance.getConfig();
 
-        Configs.SLOW_FALLING_SECONDS = fc.getInt("slow_falling_seconds", 30);
-
         String hg = "happy_ghast.";
+        Configs.HG_ENABLE = fc.getBoolean(hg + "enable", false);
+        Configs.WHEN_DISMOUNT_RESET_SPEED = fc.getBoolean(hg + "when_dismount_reset_speed", false);
         Configs.BASE = fc.getDouble(hg + "base", 0.05);
         Configs.RANDOM_MODE = fc.getBoolean(hg + "random_mode", false);
 
@@ -55,6 +53,8 @@ public final class ConfigManager {
         String dr = "direct";
         String sc = "scale";
         String lf = "leaves_floor";
+
+        Configs.DI_ENABLE = fc.getBoolean(di + "enable", true);
 
         Configs.OTN_SLOW_FALLING_SECONDS = fc.getInt(di + ov + to + tn + sfs, 30);
         Configs.OTN_DIRECT = fc.getBoolean(di + ov + to + tn + dr, false);

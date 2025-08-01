@@ -1,4 +1,6 @@
 happy_ghast:
+  enable: false
+  when_dismount_reset_speed: false
   base: 0.05
   random_mode: false
   random:
@@ -25,6 +27,7 @@ happy_ghast:
     pink_harness: 0.15
 
 dimension:
+  enable: true
   overworld:
     to:
       the_nether:

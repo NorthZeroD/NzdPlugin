@@ -6,7 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public final class Configs {
-    public static int SLOW_FALLING_SECONDS = 30;
+    public static boolean HG_ENABLE = false;
+    public static boolean WHEN_DISMOUNT_RESET_SPEED = false;
     public static boolean RANDOM_MODE = false;
     public static double BASE = 0.05;
     public static int MOD = 100;
@@ -34,6 +35,8 @@ public final class Configs {
         HARNESS.put(Material.MAGENTA_HARNESS, 0.14);
         HARNESS.put(Material.PINK_HARNESS, 0.15);
     }
+
+    public static boolean DI_ENABLE = true;
 
     public static int OTN_SLOW_FALLING_SECONDS = 30;
     public static boolean OTN_DIRECT = false;

@@ -12,21 +12,18 @@ import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-public final class PlayerFallIntoVoidListener implements
-
-        Listener {
+public final class PlayerFallIntoVoidListener implements Listener {
     @EventHandler
     public void onEntityDamage(EntityDamageEvent event) {
 
-        if (event.getEntity() instanceof Player player && event.getCause() == DamageCause.VOID) {
+        if (event.getEntity() instanceof Player player
+                && event.getCause() == DamageCause.VOID
+                && player.getY() < player.getLocation().getWorld().getMinHeight() - 64
+        ) {
             Location playerLocation = player.getLocation();
 
             World world = playerLocation.getWorld();
             Environment environment = world.getEnvironment();
-
-//            playerLocation.setX(playerLocation.getBlockX() + 0.5);
-//            playerLocation.setZ(playerLocation.getBlockZ() + 0.5);
-            int minHeight = world.getMinHeight() - 1;
 
             int blockX = playerLocation.getBlockX();
             int blockZ = playerLocation.getBlockZ();
@@ -37,7 +34,6 @@ public final class PlayerFallIntoVoidListener implements
 
             if (environment == Environment.NORMAL) {
                 playerLocation.setWorld(the_nether);
-//                playerLocation.setY(256);
                 playerLocation.setY(the_nether.getMaxHeight() + 1);
                 playerLocation.setX(((int)(blockX * Configs.OTN_SCALE)) + 0.5);
                 playerLocation.setZ(((int)(blockZ * Configs.OTN_SCALE)) + 0.5);
@@ -47,7 +43,6 @@ public final class PlayerFallIntoVoidListener implements
 
             if (environment == Environment.NETHER) {
                 playerLocation.setWorld(the_end);
-//                playerLocation.setY(256);
                 playerLocation.setY(the_end.getMaxHeight() + 1);
                 playerLocation.setX(((int)(blockX * Configs.NTE_SCALE)) + 0.5);
                 playerLocation.setZ(((int)(blockZ * Configs.NTE_SCALE)) + 0.5);
@@ -57,7 +52,6 @@ public final class PlayerFallIntoVoidListener implements
 
             if (environment == Environment.THE_END) {
                 playerLocation.setWorld(overworld);
-//                playerLocation.setY(320);
                 playerLocation.setY(overworld.getMaxHeight() + 1);
                 playerLocation.setX(((int)(blockX * Configs.ETO_SCALE)) + 0.5);
                 playerLocation.setZ(((int)(blockZ * Configs.ETO_SCALE)) + 0.5);

@@ -33,7 +33,6 @@ public final class PlayerReachMaxHeightListener implements Listener {
         if (playerLocation.getY() > maxHeight) {
             if (environment == Environment.NORMAL) {
                 playerLocation.setWorld(the_end);
-//                int blockY = 0;
                 int blockY = the_end.getMinHeight();
 
                 playerLocation.setY(blockY + 1);
@@ -57,7 +56,6 @@ public final class PlayerReachMaxHeightListener implements Listener {
 
             if (environment == Environment.NETHER) {
                 playerLocation.setWorld(overworld);
-//                int blockY = -64;
                 int blockY = overworld.getMinHeight();
 
                 playerLocation.setY(blockY + 1);
@@ -81,7 +79,6 @@ public final class PlayerReachMaxHeightListener implements Listener {
 
             if (environment == Environment.THE_END) {
                 playerLocation.setWorld(the_nether);
-//                playerLocation.setY(5);
                 int blockY = the_nether.getMinHeight();
 
                 playerLocation.setY(blockY + 1);
