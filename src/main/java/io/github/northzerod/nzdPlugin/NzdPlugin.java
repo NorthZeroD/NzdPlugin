@@ -18,8 +18,10 @@ public final class NzdPlugin extends JavaPlugin {
         ConfigManager.reload();
 
         // 事件注册
-        this.getServer().getPluginManager().registerEvents(new PlayerFallIntoVoidListener(), this);
-        this.getServer().getPluginManager().registerEvents(new PlayerReachMaxHeightListener(), this);
+        if (Configs.DI_ENABLE) {
+            this.getServer().getPluginManager().registerEvents(new PlayerFallIntoVoidListener(), this);
+            this.getServer().getPluginManager().registerEvents(new PlayerReachMaxHeightListener(), this);
+        }
         if (Configs.HG_ENABLE) {
             this.getServer().getPluginManager().registerEvents(new PlayerMountHappyGhastListener(), this);
             this.getServer().getPluginManager().registerEvents(new PlayerDismountHappyGhastListener(), this);
